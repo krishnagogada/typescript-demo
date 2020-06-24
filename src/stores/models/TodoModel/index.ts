@@ -53,7 +53,7 @@ class TodoModel {
       todoCompletionRequest
     )
     return bindPromiseWithOnSuccess(updateTodoCompletionPromise)
-      .to(this.setUpdateCompletionAPIStatus, () => {})
+      .to(this.setUpdateCompletionAPIStatus, () => { })
       .catch(this.setUpdateCompletionAPIError)
   }
 }
