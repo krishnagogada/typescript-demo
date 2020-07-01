@@ -4,10 +4,13 @@ import { observable, action } from 'mobx'
 
 import { isEnterKeyEvent } from '../../utils/AppUtils'
 import { UserInputButton, UserTextInput } from './styledComponents'
+import { withTranslation, WithTranslation } from "react-i18next"
+import { threadId } from "worker_threads"
 
-type UserInputProps = {
+interface UserInputProps extends WithTranslation {
   onAddInput: (userInput: string) => any
   buttonText: string
+  componentRef: any
 }
 
 @observer
@@ -15,7 +18,7 @@ class UserInput extends Component<UserInputProps> {
   @observable userInput = ''
 
   static defaultProps = {
-    buttonText: 'Add Input'
+    buttonText: "Add New-"
   }
 
   onChange = event => {
@@ -66,4 +69,4 @@ class UserInput extends Component<UserInputProps> {
   }
 }
 
-export default UserInput
+export default withTranslation('translation', { withRef: true })(UserInput)
